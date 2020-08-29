@@ -5,7 +5,7 @@
 
 npm install
 
-## Second Put your code in src/environments/environments.ts
+## Second Put your code for firebase in src/environments/environments.ts
 
 ## Third  Development server
 
