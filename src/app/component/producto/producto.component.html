@@ -1,0 +1,45 @@
+<div class="col-md-3 offset-md-3 m-auto">
+    <div class="card">
+        <img src="https://placekitten.com/300/300"  *ngIf="firebase.image === null" style="width:150;height:200px;">
+        <img src="{{firebase.image}}" *ngIf="firebase.image !== null"  style="width:150;height:200px;"/>
+
+        <i class="fas fa-camera" 
+        onClick="document.getElementById('imagen').click()"
+        style="position:relative;top:-35px;font-size:30px;
+        color:black;margin-left:10px;"></i>
+        <div class="card-body">
+            <form (ngSubmit)="Crear()" [formGroup]="firebase.productoForm" >
+                <div class="form-group">
+                    <input type="text" class="form-control" formControlName="nombre" placeholder="Name producto">
+                </div>
+                <div class="form-group">
+                    <select id="categoria" class="form-control" formControlName="categoria">
+                        <option value="null">Seleccione</option>
+                        <option value="Herramienta de Mano">Herramienta de mano</option>
+                        <option value="Lubricantes">Lubricantes</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" row="5" col="5" formControlName="descripcion" placeholder="Description"></textarea>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Precio" formControlName="precio">
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Stock" formControlName="stock">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="file" id="imagen" style="display:none;" (change)="UploadFile($event)" class="form-control" placeholder="Precio">
+                </div>
+                <button type="submit" class="btn btn-primary mt-5" type="submit" *ngIf="firebase.id === null">Agregar</button>
+                <div *ngIf="firebase.id !== null">
+                    <button type="button" class="btn btn-danger" (click)="Cancelar()">Cancelar</button>
+                    <button type="submit" class="btn btn-success">Update</button>
+                </div>
+            </form>
+        </div>
+    
+    </div>
+</div>
